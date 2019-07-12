@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>User Management</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="datetimepicker-jquery-plugin/js/jquery.min.js"></script>
+  <script src="js/main.js"></script> 
+</head>
+<body>
+<div class="container">
+    <button id="createUser" class="btn btn-primary">Create User</button>
+    <button id="getAllUsers" class="btn btn-primary">Show All Users</button>
+</div>
+<div class="container">
+  <div id="create-user">
+    <form action="/" id="createUserForm">
+        <div class="form-group">
+          <label for="firstName">Firstname:</label>
+          <input type="text" class="form-control" id="firstName" placeholder="Enter firstname" name="firstName" required>
+          <div class="valid-feedback">Valid.</div>
+          <div class="invalid-feedback">Please fill out this field.</div>
+        </div>
+        <div class="form-group">
+            <label for="lastName">Lastname:</label>
+            <input type="text" class="form-control" id="lastName" placeholder="Enter lastname" name="lastName" required>
+            <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback">Please fill out this field.</div>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="text" class="form-control" id="email" placeholder="Enter email" name="email" required>
+            <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback">Please fill out this field.</div>
+        </div>
+        <div class="form-group">
+              <label for="phone">Phone:</label>
+              <input type="text" class="form-control" id="phone" placeholder="Enter phone" name="phone" required>
+              <div class="valid-feedback">Valid.</div>
+              <div class="invalid-feedback">Please fill out this field.</div>
+        </div>
+        <div class="form-group">
+            <label for="dateOfBirth">Date Of Birth:</label>
+            <input type="text" class="form-control" id="dateOfBirth" placeholder="Enter date of birth" name="dateOfBirth" required>
+            <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback">Please fill out this field.</div>
+        </div>
+        <div class="form-group">
+            <label for="comment">Address:</label>
+            <textarea class="form-control" rows="5" id="address" placeholder="Enter address" name="address" required></textarea>
+          </div>
+        <div class="form-group form-check">
+          <label class="form-check-label">
+            <input class="form-check-input" type="checkbox" name="remember" required> I agree 
+            <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback">Check this checkbox to continue.</div>
+          </label>
+        </div>
+        <p id="responseMessage"></p>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+      <div id="delete-user"style ="margin-top: 11px;">
+        <form action="/" id="deleteUserForm">
+          <button type="submit" class="btn btn-primary" style=" padding: 5px 18px 5px 10px;">Delete</button>
+        </form>
+      </div>
+  </div>
+  <div class="container" class="showUsers" id="showUsers">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Date of Birth</th>
+            <th>Address</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="user_info_body">
+        </tbody>
+      </table>
+  </div>
+</div>
+
+<link rel="stylesheet" type="text/css" href="datetimepicker-jquery-plugin/css/jquery.datetimepicker.min.css"/>
+<script src="datetimepicker-jquery-plugin/js/jquery.datetimepicker.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+      $('#dateOfBirth').datetimepicker();
+  });
+</script>
+<script>
+// Disable form submissions if there are invalid fields
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Get the forms we want to add validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+</script>
+</body>
+</html>
